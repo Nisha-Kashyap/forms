@@ -1,0 +1,56 @@
+<fieldset>
+    <legend>
+        <h3 class="text-uppercase">Sign Up</h3>
+    </legend>
+    <form name="signupform" #signupForm="ngForm" (ngSubmit)="saveData(signupForm)">
+        <div class="row form-group"> 
+            <label for="fname" class="col-sm-2">First Name</label>
+            <input type="text" name="fname" #fnameCtrl="ngModel" ngModel required class="col-sm-3 form-control" placeholder="First Name">
+            <div class="has-error" *ngIf="fnameCtrl.touched && fnameCtrl.errors">
+                <span class="help-block">This Field is required</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="lname" class="col-sm-2">Last name</label>
+            <input type="text" name="lname" #lnameCtrl="ngModel" ngModel required class="col-sm-3 form-control" placeholder="Last Name">
+            <div class="has-error" *ngIf="lnameCtrl.touched && lnameCtrl.errors">
+                <span class="help-block">This Field is required</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="email" class="col-sm-2">Email</label>
+            <input type="email" name="email" #emailCtrl="ngModel" ngModel required email class="col-sm-3 form-control" placeholder="Email">
+            <div class="has-error" *ngIf="emailCtrl.touched && emailCtrl.errors">
+                <span class="help-block" *ngIf="emailCtrl.errors.required">This Field is required</span>
+                <span class="help-block" *ngIf="emailCtrl.errors.email">Invalid Email</span>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label for="phone" class="col-sm-2">Phone</label>
+            <input type="text" name="phone" #phoneCtrl="ngModel" ngModel class="col-sm-3 form-control" placeholder="Phone">
+        </div>
+        <div class="row form-group">
+            <label for="gender" class="col-sm-2">Gender</label>
+            <label class="col-sm-2"><input type="radio" name="gender" value="male"> Male </label>
+            <label class="col-sm-2"><input type="radio" name="gender" value="female"> Female</label>
+        </div>
+        <div class="row form-group">
+            <label for="idproofs" class="col-sm-2">Id Proofs</label>
+            <label class="col-sm-2"><input type="checkbox" name="pancard" value="pancard"> PAN Card </label>
+            <label class="col-sm-2"><input type="checkbox" name="aadharcard" value="aadharcard"> Aadhar Card</label>
+            <div class="w-100"></div>
+            <label class="col-sm-2"></label>
+            <label class="col-sm-2"><input type="checkbox" name="adharcard" value="drivinglicense"> Driving License</label>
+            <label class="col-sm-2"><input type="checkbox" name="passport" value="passport"> Passport</label>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-2"></label>
+            <input type="submit" name="save" value="Sign Up" class="btn btn-primary" [disabled]="signupForm.invalid">
+        </div>
+    </form>
+    <div class="col-sm">Status: {{signupForm.status}}</div>
+    <div class="col-sm">Touched: {{signupForm.touched}}</div>
+    <div class="col-sm">UnTouched: {{signupForm.untouched}}</div>
+    <div class="col-sm">Pristine: {{signupForm.pristine}}</div>
+    <div class="col-sm">Dirty: {{signupForm.dirty}}</div>
+</fieldset>
